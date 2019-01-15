@@ -24,7 +24,6 @@ router.get("/", (req, res) => {
                         customers: customer,
                     };
 
-                    console.log(customer);
                     res.render("index", { burgers: inventory, customers: customer });
                 });
         })
