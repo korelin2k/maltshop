@@ -1,0 +1,18 @@
+<tr>
+	<td width="40%" valign="top"><span style="line-height: 3;">{{burger_name}}</span><br />
+		{{description}}
+		<br /><br />
+		<button class="change-devoured btn btn-sm btn-secondary" data-id="{{id}}" data-devoured="{{devoured}}">
+			{{#if devoured}}Eat!{{else}}Make Another!{{/if}}
+		</button>
+	</td>
+
+	<td width="60%" align="right" valign="top">
+		{{#ifEquals image }}
+			{{!-- If our mediaType is equals to 'video', displaying video player. --}}
+			<img src="{{image}}" width="200px"/>
+		{{else}}
+		<img src="assets/img/{{image}}" width="200px"/>
+		{{/ifEquals}}
+	</td>
+</tr>

@@ -1,0 +1,58 @@
+<section class="relative" id="burgers">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-12 col-lg-6 jumbotron">
+        <h2>Eat a Burger!</h2>
+
+        <table width="100%" cellpadding="10">
+          {{#each burgers}}
+          {{#unless devoured}}
+          {{> burgers/burger-block devoured=true}}
+          {{/unless}}
+          {{/each}}
+        </table>
+      </div>
+      <div class="col-md-12 col-lg-6 jumbotron">
+        <h2>Make a Burger!</h2>
+
+        <table width="100%" cellpadding="10">
+          {{#each burgers}}
+          {{#if devoured}}
+          {{> burgers/burger-block devoured=false}}
+          {{/if}}
+          {{/each}}
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 jumbotron">
+        <h2>Add a Burger</h2>
+        <form class="create-form">
+
+          <div class="form-group">
+            <label for="ca">Burger Name:</label>
+            <input type="text" class="form-control" id="ca" name="name">
+          </div>
+
+          <div class="form-group">
+            <label for="des">Description:</label>
+            <input type="text" class="form-control" id="des" name="name">
+          </div>
+
+          <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input type="text" class="form-control" id="image" name="name">
+          </div>
+
+          <div class="form-group">
+            <label for="devoured">Available?</label><br>
+            <input type="radio" name="devoured" value="1" checked> Eat!<br>
+            <input type="radio" name="devoured" value="0"> Available
+          </div>
+
+          <button type="submit" class="btn btn-secondary btn-lg">Add Burger</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
