@@ -6,19 +6,28 @@ interface IInventoryAttributes {
     name: string;
     image: string;
     description: string;
+    devoured: boolean;
     createdAt?: string;
     updatedAt?: string;
     customer?: CustomerModel;
 }
 
-type InventoryInstance = Sequelize.Instance<IInventoryAttributes> & IInventoryAttributes;
+export type InventoryInstance = Sequelize.Instance<IInventoryAttributes> & IInventoryAttributes;
 export type InventoryModel = Sequelize.Model<InventoryInstance, IInventoryAttributes>;
 
 export function initInventory(sequelize: Sequelize.Sequelize): InventoryModel {
     const attributes: SequelizeAttributes<IInventoryAttributes> = {
+        createdAt: {
+            defaultValue: sequelize.literal("NOW()"),
+            type: Sequelize.DATE,
+        },
         description: {
             allowNull: false,
             type: Sequelize.TEXT,
+        },
+        devoured: {
+            allowNull: false,
+            type: Sequelize.BOOLEAN,
         },
         image: {
             allowNull: false,
@@ -33,6 +42,10 @@ export function initInventory(sequelize: Sequelize.Sequelize): InventoryModel {
             validate: {
                 len: [4, 50],
             },
+        },
+        updatedAt: {
+            defaultValue: sequelize.literal("NOW()"),
+            type: Sequelize.DATE,
         },
     };
     const inventory = sequelize.define<InventoryInstance, IInventoryAttributes>("Inventory", attributes);

@@ -15,8 +15,10 @@
     "watch-ts": "tsc-watch --onSuccess \"npm run dev\""
   },
   "dependencies": {
+    "@types/handlebars": "^4.0.40",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.12",
     "mysql2": "^1.6.4",
     "sequelize": "^4.42.0"
   },

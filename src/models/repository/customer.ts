@@ -10,7 +10,7 @@ interface ICustomerAttributes {
     inventory?: InventoryModel;
 }
 
-type CustomerInstance = Sequelize.Instance<ICustomerAttributes> & ICustomerAttributes;
+export type CustomerInstance = Sequelize.Instance<ICustomerAttributes> & ICustomerAttributes;
 export type CustomerModel = Sequelize.Model<CustomerInstance, ICustomerAttributes>;
 
 export function initCustomer(sequelize: Sequelize.Sequelize): CustomerModel {
