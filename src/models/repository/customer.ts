@@ -4,7 +4,6 @@ import { InventoryModel } from "./inventory";
 interface ICustomerAttributes {
     id?: number;
     name: string;
-    image: string;
     createdAt?: string;
     updatedAt?: string;
     inventory?: InventoryModel;
@@ -15,18 +14,9 @@ export type CustomerModel = Sequelize.Model<CustomerInstance, ICustomerAttribute
 
 export function initCustomer(sequelize: Sequelize.Sequelize): CustomerModel {
     const attributes: SequelizeAttributes<ICustomerAttributes> = {
-        id: {
-            allowNull: false,
-            defaultValue: Sequelize.INTEGER,
-            primaryKey: true,
-            type: Sequelize.INTEGER,
-        },
-        image: {
-            allowNull: false,
-            type: Sequelize.STRING(1280),
-            validate: {
-                len: [5, 1280],
-            },
+        createdAt: {
+            defaultValue: sequelize.literal("NOW()"),
+            type: Sequelize.DATE,
         },
         name: {
             allowNull: false,
@@ -34,6 +24,10 @@ export function initCustomer(sequelize: Sequelize.Sequelize): CustomerModel {
             validate: {
                 len: [2, 100],
             },
+        },
+        updatedAt: {
+            defaultValue: sequelize.literal("NOW()"),
+            type: Sequelize.DATE,
         },
     };
 

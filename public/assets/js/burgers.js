@@ -3,15 +3,17 @@ $(function() {
     $(".change-devoured").on("click", function(event) {
       var id = $(this).data("id");
       var newDevoured = $(this).data("devoured");
+      var yourName = $("#customer-name").val();
   
-      var newDevouredState = {
-        devoured: newDevoured,
+      var newDevoured = {
+        name: yourName,
+        InventoryId: id
       };
   
       // Send the PUT request.
-      $.ajax("/api/burger/" + id, {
-        type: "PUT",
-        data: newDevouredState,
+      $.ajax("/api/customer/", {
+        type: "POST",
+        data: newDevoured,
       }).then(
         function() {
           location.reload();
